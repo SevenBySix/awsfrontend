@@ -9,14 +9,23 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post('http://100.27.138.174:5000/api/query', { query });
-      setResult(response.data.data);
-      setError(null);
-    } catch (err) {
-      setError(err.response ? err.response.data.message : err.message);
-      setResult(null);
-    }
+    axios.post('http://54.196.97.136:5000/api/query', { query })
+	  .then(response => {
+		console.log('Query result:', response.data);
+	  })
+	  .catch(error => {
+		if (error.response) {
+		  // The request was made, and the server responded with a status code out of the range of 2xx
+		  console.error('Error response:', error.response.data);
+		  alert(`Error: ${error.response.data.message}`);  // Show error message
+		} else if (error.request) {
+		  // The request was made, but no response was received
+		  console.error('No response received:', error.request);
+		} else {
+		  // Something happened in setting up the request that triggered an Error
+		  console.error('Error:', error.message);
+		}
+	  });
   };
 
   return (
