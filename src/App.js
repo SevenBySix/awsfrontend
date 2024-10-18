@@ -15,7 +15,7 @@ function App() {
       setResult(null);
 
       // Send the query to the backend
-      const response = await axios.post('https://100.27.138.174:5000/api/query', { query });
+      const response = await axios.post('http://100.27.138.174:5000/api/query', { query });
 
       // Set the result in the state to display it
       setResult(response.data);
