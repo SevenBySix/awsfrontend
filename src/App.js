@@ -10,7 +10,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://54.196.97.136:5000/api/query', { query });
+      const response = await axios.post('http://100.27.138.174:5000/api/query', { query });
       setResult(response.data.data);
       setError(null);
     } catch (err) {
