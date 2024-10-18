@@ -9,23 +9,29 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post('http://54.196.97.136:5000/api/query', { query })
-	  .then(response => {
-		console.log('Query result:', response.data);
-	  })
-	  .catch(error => {
-		if (error.response) {
-		  // The request was made, and the server responded with a status code out of the range of 2xx
-		  console.error('Error response:', error.response.data);
-		  alert(`Error: ${error.response.data.message}`);  // Show error message
-		} else if (error.request) {
-		  // The request was made, but no response was received
-		  console.error('No response received:', error.request);
-		} else {
-		  // Something happened in setting up the request that triggered an Error
-		  console.error('Error:', error.message);
-		}
-	  });
+    try {
+      // Clear any previous error
+      setError(null);
+      setResult(null);
+
+      // Send the query to the backend
+      const response = await axios.post('http://54.196.97.136:5000/api/query', { query });
+
+      // Set the result in the state to display it
+      setResult(response.data);
+    } catch (err) {
+      // Handle error responses from the server
+      if (err.response) {
+        // Server responded with a status code out of the 2xx range
+        setError(`Error: ${err.response.data.message || 'Something went wrong with the query'}`);
+      } else if (err.request) {
+        // Request was made, but no response was received
+        setError('No response received from the server.');
+      } else {
+        // Something happened in setting up the request
+        setError(`Error: ${err.message}`);
+      }
+    }
   };
 
   return (
