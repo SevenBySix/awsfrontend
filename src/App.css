@@ -5,27 +5,26 @@ body {
 #navbar {
   position: relative;
   background-color: rgb(245, 45, 5);
-  margin: auto 0;
   width: 100%;
-  height: 10%;
+  height: 60px;
   font-size: 50px;
-}
-
-#section1 {
-  background-color: rgb(115, 236, 195);
-  width: 80%;
-  margin: 10% auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 #appointmentButton {
-  display: block;
-  margin: auto;
+  position: absolute; 
+  top: 10px; 
+  right: 20px; 
   background-color: rgb(215, 130, 11);
   color: white;
   border-radius: 10px;
   border: none;
-  font-size: 40px;
-  padding: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 #footer {
@@ -35,17 +34,17 @@ body {
   font-size: 30px;
   margin-top: 30%;
 }
-
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); 
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000; 
 }
 
 .modal-content {
@@ -53,8 +52,18 @@ body {
   padding: 20px;
   border-radius: 10px;
   width: 300px;
+  max-width: 90%; 
+  max-height: 90%; 
+  overflow-y: auto; 
 }
 
-.modal-content h2 {
-  margin-top: 0;
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
