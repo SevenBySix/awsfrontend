@@ -83,6 +83,10 @@ function Form({ handleSubmit, closeForm }) {
         <input type="text" name="caretakerName" />
       </div>
       <div className="form-group">
+        <label>Email:</label>
+        <input type="email" name="email"/>
+      </div>
+      <div className="form-group">
         <label>Date:</label>
         <input type="date" name="date" />
       </div>
