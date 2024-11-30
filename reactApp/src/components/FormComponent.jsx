@@ -1,10 +1,10 @@
-
+import Label from "./Label"
 /* eslint-disable react/prop-types */
-export default function FormComponent(props) {
+export default function FormComponent({labeltext, typeOfInput, name}) {
   return (
     <div className="form-group">
-      <label>{props.labelName}</label>
-      <input type={props.typeOfInput} name={props.name} />
+      <Label text={labeltext}/>
+      <input type={typeOfInput} name={name} />
   </div>
   )
 }

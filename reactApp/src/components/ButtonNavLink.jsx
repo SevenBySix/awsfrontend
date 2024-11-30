@@ -2,10 +2,10 @@
 import {NavLink} from "react-router-dom"
 import "./ButtonNavLink.css"
 
-export default function ButtonNavLink(props) {
+export default function ButtonNavLink({to, id,text}) {
   return (
     <div>
-        <NavLink to={props.to}><button id={props.id}>{props.text}</button></NavLink>
+        <NavLink to={to}><button id={id}>{text}</button></NavLink>
     </div>
   )
 }
