@@ -1,20 +1,6 @@
-#scheduleButton {
-  background-color: orange;
+button {
   border-radius: 10px;
   font-size: 1rem;
   margin-right: 1vw;
 }
 
-#goBackToHomePageButton {
-  background-color:rgb(195, 62, 62);
-  border-radius: 1em;
-}
-
-#goToLoginPageButton {
-  background-color: rgb(22, 188, 229);
-  border-radius: 1em;
-}
-
-#goBackToHomePageButton,#goToLoginPageButton {
-  padding: 0.2em;
-} 

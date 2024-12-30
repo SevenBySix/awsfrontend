@@ -8,11 +8,11 @@ form {
   border-radius: 15px;
   padding: 8vw;
   width: 50vw;
-  height: 50vh;
-  margin:1% auto;
+  height: 30%;
+  margin:3% auto;
 }
 
-form .container {
+form .myform_container {
   display: flex;
   justify-content:center;
   flex-direction:column;
@@ -42,7 +42,7 @@ form .container_component input {
   width: 35%;
 }
 
-form .form-buttons {
+form .formButtons {
   display: flex;
   justify-content: space-around;
 }
@@ -102,7 +102,7 @@ form .form-buttons {
     font-size: 20px;
   }
 
-  form .form-buttons {
+  form .formButtons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -119,6 +119,8 @@ form .form-buttons {
     justify-content: space-between;
     align-items: center;
   }
+
+ 
 
 
 

@@ -1,8 +1,8 @@
-import "./SubmitButton.css"
+import styles from "./SubmitButton.module.css"
 
 /* eslint-disable react/prop-types */
-export default function SubmitButton({id, text}) {
+export default function SubmitButton({color, text}) {
   return (
-    <button type="submit" id={id} >{text}</button>
+    <input type="submit" id={styles.submitButton} style={{backgroundColor: color}} value={text.toString()}/>
   )
 }

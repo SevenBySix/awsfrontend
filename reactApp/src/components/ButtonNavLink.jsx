@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import {NavLink} from "react-router-dom"
-import "./ButtonNavLink.css"
+import  "./ButtonNavLink.css"
 
-export default function ButtonNavLink({to, id,text}) {
+
+export default function ButtonNavLink({to,id,color, children}) {
   return (
     <div>
-        <NavLink to={to}><button id={id}>{text}</button></NavLink>
+        <NavLink to={to.toString()}><button id={id.toString()} style={{backgroundColor: color}}>{children}</button></NavLink>
     </div>
   )
 }

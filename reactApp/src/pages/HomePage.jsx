@@ -7,9 +7,9 @@ export default function HomePage() {
   return (
    <div className={styles.container}>
       <nav className={styles.navbar}>
-        <div id={styles.logo}><h2>Veterinarian Web App</h2></div>
+        <div id={styles.logo}><h2>🐕Veterinarian Web App</h2></div>
 
-        <ButtonNavLink to="/signup" text="schedule an appointment" id="scheduleButton"/>
+        <ButtonNavLink to="/signup" id={styles.scheduleButton} color="orange">Schedule An Appointment➡</ButtonNavLink>
       </nav>
 
       <div className={styles.welcome}>

@@ -1,0 +1,32 @@
+
+.container {
+  padding: 20px;
+  width: 100%;
+ 
+
+}
+
+.subcontainer3 {
+  display: flex;
+}
+
+.subcontainer4 {
+  width: 50%;
+}
+
+.time_subcontainer {
+  width: 40%;
+}
+
+.separate_area1 {
+  margin-top: 1vh;
+}
+
+.separate_area2 {
+  margin-top: 2vh;
+}
+
+
+
+
+

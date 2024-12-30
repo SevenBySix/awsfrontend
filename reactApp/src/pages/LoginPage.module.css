@@ -1,15 +1,17 @@
 
-.signupcontainer {
-  background-image:url("../images/cat.webp");
+.mycontainer {
+  background-image: url("../images/dog2.jpg");
   background-size:cover;
+  background-repeat: no-repeat;
   width: 100%;
-  height:150vh;
-  overflow:scroll;
+  height: 100vh;
+  overflow: scroll;
+  margin: 0;
 }
 
 #header h1 {
   text-align: center;
-  color: rgb(247, 112, 202);
+  color: rgb(241, 57, 33);
   font-size: 3.4rem;
 }
 
