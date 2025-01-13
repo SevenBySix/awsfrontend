@@ -46,7 +46,7 @@ export default function ScheduleForm() {
             </div>
             <div className={styles.subcontainer3}>
               <div className={styles.separate_area2}>
-                <SubmitButton color="red" text="Submit Appointment Schedule"/>
+                <SubmitButton color="orange" text="Submit Appointment Schedule"/>
               </div>
             </div>
           
