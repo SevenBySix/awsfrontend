@@ -2,9 +2,10 @@ import styles from "./Form.module.css"
 import ButtonNavLink from "./ButtonNavLink";
 import SubmitButton from "./SubmitButton";
 import LoginNavLink from "./LoginNavLink";
+import registerOwner from "./RegisterOwner";
 
 import { useState } from "react";
-import axios from "axios";
+
 
 
 
@@ -14,10 +15,9 @@ export default function Form({forwardButtonPath, backButtonPath}) {
 
   // useState hook in practice.  youremail and yourpassword are variables, 
   // and setYourEmail and setYourPassword are functions.  The useState for each of them is blank in the input fields.
-  const [youremail, setYourEmail] = useState("");
-  const [yourpassword, setYourPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [result, setResult] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   
   // button colors
   const backButtonColor = "red";
@@ -27,46 +27,12 @@ export default function Form({forwardButtonPath, backButtonPath}) {
 
 
   // function that handles the submission of the user's account data (email and password)
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    //alert(`The name you entered was: ${youremail}`);
+  
 
-    try {
-      // Clear any previous error
-      setError(null);
-      setResult(null);
-
-      // json data
-
-      const registration_info = JSON.stringify({"email": youremail, "password": yourpassword});
-
-     
-
-      console.log(registration_info);
-
-      // Send the query to the backend
-      const response = await axios.post("https://54.158.247.54:5000/clientAuth/register", registration_info);
-
-      // Set the result in the state to display it
-      setResult(response.data);
-    } catch (err) {
-      // Handle error responses from the server
-      if (err.response) {
-        // Server responded with a status code out of the 2xx range
-        setError(`Error: ${err.response.data.message || 'Something went wrong with the query'}`);
-      } else if (err.request) {
-        // Request was made, but no response was received
-        setError('No response received from the server.');
-      } else {
-        // Something happened in setting up the request
-        setError(`Error: ${err.message}`);
-      }
-    }
-    
-
-    
-    
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await registerOwner(email, password);
+  };
 
   return (
     <form onSubmit={handleSubmit} >
@@ -74,11 +40,11 @@ export default function Form({forwardButtonPath, backButtonPath}) {
           <div className={styles.container2}>
             <div className={styles.container_component}>
               <label>Email:</label>
-              <input type="email" value={youremail} onChange={(e) => setYourEmail(e.target.value)}/>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </div>
             <div className={styles.container_component}>
               <label>Password:</label>
-              <input type="password" value={yourpassword} maxLength="12" onChange={(e) => setYourPassword(e.target.value)}/>
+              <input type="password" value={password} maxLength="12" onChange={(e) => setPassword(e.target.value)}/>
             </div>
           </div>
 
@@ -94,19 +60,7 @@ export default function Form({forwardButtonPath, backButtonPath}) {
         
         <LoginNavLink/>
 
-      {result && (
-        <div>
-          <h3>Result:</h3>
-          <pre>{JSON.stringify(result, null, 2)}</pre>
-        </div>
-      )}
-      {error && (
-        <div style={{ color: 'red', textAlign: "center" }}>
-          <h3>Error:</h3>
-          <pre>{error}</pre>
-        </div>
-      )}
-      
+ 
     </form>
   );
 }
