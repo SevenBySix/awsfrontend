@@ -1,19 +1,18 @@
 import axios from "axios";
 
-export let isRegistered = false; // keep track whether the pet owner is logged in.
 
-const registerOwner = async (email, password) => {
-
+const ScheduleAppointment= async (email, name, Pname, Pbreed, Ptype, date, time) => {
 
 
     try {
 
-      //const apiUrl = 'https://54.158.247.54:5000/clientAuth/register';
-      const apiUrl2 = 'https://api.vpbackendapi.com:5000/clientAuth/register';
+      const apiUrl = 'https://api.vpbackendapi.com:5000/api/schedule';
+      const dateString = date.toString();
+      const timeString = time.toString();
 
       const response = await axios.post(
-        apiUrl2,
-        { email, password }, // Request body
+        apiUrl,
+        { email,  name, Pname, Pbreed, Ptype, dateString, timeString }, // Request body
         {
           headers: {
             'Content-Type': 'application/json',
@@ -22,10 +21,9 @@ const registerOwner = async (email, password) => {
       );
   
       if (response.status === 201) {
-        console.log('Registration successful:', response.data);
-        alert('User registered successfully!');
-        isRegistered = true;
-        
+        console.log('Schedule successful:', response.data);
+        alert('User scheduled appointment successfully!');
+       
 
         return response.data; // You can return the response for further use
       }
@@ -33,7 +31,7 @@ const registerOwner = async (email, password) => {
     } catch (error) {
       if (error.response) {
         // Server responded with an error status
-        console.error('Registration failed:', error.response.data);
+        console.error('Scheduling failed:', error.response.data);
         alert(error.response.data.error || 'Registration failed.');
       } else if (error.request) {
         // Request was made but no response was received
@@ -47,4 +45,4 @@ const registerOwner = async (email, password) => {
     }
 }
 
-export default registerOwner
+export default ScheduleAppointment

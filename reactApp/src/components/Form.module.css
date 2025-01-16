@@ -10,7 +10,11 @@ form {
   width: 50vw;
   height: 30%;
   margin:3% auto;
+  max-width: 40vw;
+  min-width: 20vw;
 }
+
+
 
 form .myform_container {
   display: flex;

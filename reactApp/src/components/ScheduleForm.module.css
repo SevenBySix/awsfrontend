@@ -1,4 +1,8 @@
 
+form {
+  max-width: 40vw;
+  min-width: 20vw;
+}
 .container {
   padding: 20px;
   width: 100%;
@@ -7,7 +11,7 @@
 }
 
 .subcontainer3 {
-  display: flex;
+  display: flex; 
 }
 
 .subcontainer4 {
@@ -24,6 +28,19 @@
 
 .separate_area2 {
   margin-top: 2vh;
+}
+
+.separate_area3 {
+  margin-top: 2vh;
+}
+
+.separate_area4 {
+  margin-top: 2vh;
+}
+
+#new_appointment_button {
+  border-radius: 15px;
+  background-color:rgb(236, 236, 23);
 }
 
 

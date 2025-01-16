@@ -1,15 +1,14 @@
 import axios from "axios";
 
-export let isRegistered = false; // keep track whether the pet owner is logged in.
 
-const registerOwner = async (email, password) => {
+const LoginOwner = async (email, password) => {
 
 
 
     try {
 
       //const apiUrl = 'https://54.158.247.54:5000/clientAuth/register';
-      const apiUrl2 = 'https://api.vpbackendapi.com:5000/clientAuth/register';
+      const apiUrl2 = "https://api.vpbackendapi.com:5000/clientAuth/login";
 
       const response = await axios.post(
         apiUrl2,
@@ -22,9 +21,9 @@ const registerOwner = async (email, password) => {
       );
   
       if (response.status === 201) {
-        console.log('Registration successful:', response.data);
-        alert('User registered successfully!');
-        isRegistered = true;
+        console.log('Login successful:', response.data);
+        alert('User logged in successfully!');
+      
         
 
         return response.data; // You can return the response for further use
@@ -47,4 +46,4 @@ const registerOwner = async (email, password) => {
     }
 }
 
-export default registerOwner
+export default LoginOwner;

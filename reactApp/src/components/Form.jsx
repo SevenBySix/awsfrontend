@@ -2,9 +2,11 @@ import styles from "./Form.module.css"
 import ButtonNavLink from "./ButtonNavLink";
 import SubmitButton from "./SubmitButton";
 import LoginNavLink from "./LoginNavLink";
+import LoginOwner from "./LoginOwner";
 import registerOwner from "./RegisterOwner";
 
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -23,19 +25,32 @@ export default function Form({forwardButtonPath, backButtonPath}) {
   const backButtonColor = "red";
   const nextButtonColor = "green";
   const submitButtonColor = "orange";
+
+  // page location
+  const pageLocation = useLocation();
+
+  const condition =  pageLocation.pathname == "/signup";
  
 
 
   // function that handles the submission of the user's account data (email and password)
   
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     await registerOwner(email, password);
   };
+  
+  
+  const handleSubmit2 = async(e) => {
+    e.preventDefault();
+    await LoginOwner(email, password);
+  }
+  
+  
 
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={condition ? handleSubmit : handleSubmit2} >
         <div className={styles.myform_container}>
           <div className={styles.container2}>
             <div className={styles.container_component}>
