@@ -1,20 +1,22 @@
 import axios from "axios";
+//import { loginKey } from "./LoginOwner";
 
 
-const ScheduleAppointment= async (email, name, Pname, Pbreed, Ptype, date, time) => {
+const ScheduleAppointment= async (email, Pname, Pbreed, Ptype, Cname, date, time) => {
 
    
 
     try {
 
-      const apiUrl = 'https://api.vpbackendapi.com:5000/api/schedule';
+      const apiUrl = 'https://api.vpbackendapi.com:5000/api/schedule/auth';
 
       const response = await axios.post(
         apiUrl,
-        { email,  name, Pname, Pbreed, Ptype, date, time }, // Request body
+        { email: email, patientName: Pname, patientBreed: Pbreed, patientType: Ptype, clientName: Cname, date: date, time: time }, // Request body
         {
           headers: {
             'Content-Type': 'application/json',
+            
           },
         }
       );
@@ -28,7 +30,7 @@ const ScheduleAppointment= async (email, name, Pname, Pbreed, Ptype, date, time)
       }
    
     } catch (error) {
-      if (error.response) {
+      if (!email || !name || !Pname || !Pbreed || !Ptype || !date || !time) {
         // Server responded with an error status
         console.error('Scheduling failed:', error.response.data);
         alert(error.response.data.error || 'Registration failed.');

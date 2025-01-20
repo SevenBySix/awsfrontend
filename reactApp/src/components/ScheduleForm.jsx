@@ -10,24 +10,22 @@ import { useState } from "react";
 export default function ScheduleForm() {
 
   const[email, setEmail] = useState("");
-  const[name, setName] = useState("");
+  const[clientName, setClientName] = useState("");
   const[petName, setPetName] = useState("");
   const[petBreed, setPetBreed] = useState("");
-  const[petType, setPetType] = useState("");
+  const[petType, setPetType] = useState("Dog");
   const[date, setDate] = useState("");
   const[time, setTime] = useState("");
   
-
+    // This function is for the dropdown menu list of pet types.
+    
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    await ScheduleAppointment(email, name, petName,petBreed, petType, date, time);
-    console.log(email,  name,  petName, petBreed,  petType,  date, time);
+    await ScheduleAppointment(email, petName,petBreed, petType, clientName, date, time);
+    console.log(email, petName, petName, petBreed,  petType, clientName, date, time);
   }
-  
 
-
-  
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.container}>
@@ -36,29 +34,28 @@ export default function ScheduleForm() {
             <div className={styles.subcontainer3}>
               <div className={styles.subcontainer4}>
                 <label>Caretaker Email:</label>
-                <input type="email" onChange={(e) => setEmail(e.target.value)} required/>
+                <input type="email" onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div className={styles.subcontainer4}>
                 <label>Caretaker Name:</label>
-                <input type="text" onChange={(e) => setName(e.target.value)} required/>
+                <input type="text" onChange={(e) => setClientName(e.target.value)} />
               </div>
             </div>
             <div className={styles.subcontainer3}>
               <div className={styles.subcontainer4}>
                 <label>Pet Name:</label>
-                <input type="text" onChange={(e) => setPetName(e.target.value)} required/>
+                <input type="text" onChange={(e) => setPetName(e.target.value)} />
               </div>
               <div className={styles.subcontainer4}>
                 <label>Pet Type:</label>
                 <div>
-                  <select id="selectionBox"  onChange={(e) => setPetType(e.target.value)}>
-                    <option disabled selected value required> -- select a pet type-- </option>
-                    <option value="Dog">Dog</option>
-                    <option value="Cat">Cat</option>
-                    <option value="Bird">Bird</option>
-                    <option value="Lizard">Lizard</option>
-                    <option value="Snake">Snake</option>
-                    <option value="Mouse">Mouse</option>
+                  <select id="selectionBox" onChange={(e) => setPetType(e.target.value)} >
+                    <option key="1" value="Dog">Dog</option>
+                    <option key="2" value="Cat">Cat</option>
+                    <option key="3" value="Bird">Bird</option>
+                    <option key="4" value="Lizard">Lizard</option>
+                    <option key="5" value="Snake">Snake</option>
+                    <option key="6" value="Mouse">Mouse</option>
                   </select>
                 </div>
               </div>
@@ -66,17 +63,17 @@ export default function ScheduleForm() {
             <div className={styles.subcontainer3}>
               <div className={styles.subcontainer4}>
                 <label>Pet Breed:</label>
-                <input type="text" onChange={(e) => setPetBreed(e.target.value)} required/>
+                <input type="text" onChange={(e) => setPetBreed(e.target.value)} />
               </div>
               <div className={styles.subcontainer4}>
                 <label>Appointment Date:</label>
-                <input type="date" onChange={(e) => setDate(e.target.value)} required/>
+                <input type="date" onChange={(e) => setDate(e.target.value)} />
               </div>
             </div>
             <div className={styles.time_subcontainer}>
               <div className={styles.separate_area1}>
                 <label>Appointment Time:</label>
-                <input type="time" step="2"  onChange={(e) => setTime(e.target.value)} required/>
+                <input type="time" onChange={(e) => setTime(e.target.value)}required/>
               </div>
             </div>
                    

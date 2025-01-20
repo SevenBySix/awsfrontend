@@ -1,6 +1,7 @@
 import axios from "axios";
 
-
+export let loginKey = "Bearer ";
+let token = "";
 const LoginOwner = async (email, password) => {
 
 
@@ -23,6 +24,9 @@ const LoginOwner = async (email, password) => {
       if (response.status === 201) {
         console.log('Login successful:', response.data);
         alert('User logged in successfully!');
+        token = response.data["token"];
+        loginKey += token;
+        console.log(loginKey);
       
         
 
