@@ -55,11 +55,11 @@ export default function Form({forwardButtonPath, backButtonPath}) {
           <div className={styles.container2}>
             <div className={styles.container_component}>
               <label>Email:</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             </div>
             <div className={styles.container_component}>
               <label>Password:</label>
-              <input type="password" value={password} maxLength="12" onChange={(e) => setPassword(e.target.value)}/>
+              <input type="password" value={password} maxLength="12" onChange={(e) => setPassword(e.target.value)} required/>
             </div>
           </div>
 

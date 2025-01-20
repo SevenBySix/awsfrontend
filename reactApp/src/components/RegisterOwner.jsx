@@ -1,9 +1,7 @@
 import axios from "axios";
 
-export let isRegistered = false; // keep track whether the pet owner is logged in.
 
-const registerOwner = async (email, password) => {
-
+const RegisterOwner = async (email, password) => {
 
 
     try {
@@ -24,10 +22,9 @@ const registerOwner = async (email, password) => {
       if (response.status === 201) {
         console.log('Registration successful:', response.data);
         alert('User registered successfully!');
-        isRegistered = true;
         
 
-        return response.data; // You can return the response for further use
+       
       }
    
     } catch (error) {
@@ -47,4 +44,4 @@ const registerOwner = async (email, password) => {
     }
 }
 
-export default registerOwner
+export default RegisterOwner

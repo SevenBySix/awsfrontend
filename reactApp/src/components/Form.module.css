@@ -42,7 +42,7 @@ form .container_component label {
   text-align: right;
 }
 
-form .container_component input {
+form .container_component .input {
   width: 35%;
 }
 

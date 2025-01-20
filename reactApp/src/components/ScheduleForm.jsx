@@ -3,6 +3,7 @@ import ButtonNavLink from "./ButtonNavLink"
 import SubmitButton from "./SubmitButton"
 import ScheduleAppointment from "./ScheduleAppointment";
 
+
 import { useState } from "react";
 
 
@@ -13,7 +14,7 @@ export default function ScheduleForm() {
   const[petName, setPetName] = useState("");
   const[petBreed, setPetBreed] = useState("");
   const[petType, setPetType] = useState("");
-  const[date, setDate] = useState(new Date(""));
+  const[date, setDate] = useState("");
   const[time, setTime] = useState("");
   
 
@@ -21,6 +22,7 @@ export default function ScheduleForm() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     await ScheduleAppointment(email, name, petName,petBreed, petType, date, time);
+    console.log(email,  name,  petName, petBreed,  petType,  date, time);
   }
   
 
@@ -34,37 +36,47 @@ export default function ScheduleForm() {
             <div className={styles.subcontainer3}>
               <div className={styles.subcontainer4}>
                 <label>Caretaker Email:</label>
-                <input type="email" onChange={(e) => setEmail(e.target.value)}/>
+                <input type="email" onChange={(e) => setEmail(e.target.value)} required/>
               </div>
               <div className={styles.subcontainer4}>
                 <label>Caretaker Name:</label>
-                <input type="text" onChange={(e) => setName(e.target.value)}/>
+                <input type="text" onChange={(e) => setName(e.target.value)} required/>
               </div>
             </div>
             <div className={styles.subcontainer3}>
               <div className={styles.subcontainer4}>
                 <label>Pet Name:</label>
-                <input type="text" onChange={(e) => setPetName(e.target.value)}/>
+                <input type="text" onChange={(e) => setPetName(e.target.value)} required/>
               </div>
               <div className={styles.subcontainer4}>
-                <label>Pet Breed:</label>
-                <input type="text" onChange={(e) => setPetBreed(e.target.value)}/>
+                <label>Pet Type:</label>
+                <div>
+                  <select id="selectionBox"  onChange={(e) => setPetType(e.target.value)}>
+                    <option disabled selected value required> -- select a pet type-- </option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Lizard">Lizard</option>
+                    <option value="Snake">Snake</option>
+                    <option value="Mouse">Mouse</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div className={styles.subcontainer3}>
               <div className={styles.subcontainer4}>
-                <label>Pet Type:</label>
-                <input type="text" onChange={(e) => setPetType(e.target.value)}/>
+                <label>Pet Breed:</label>
+                <input type="text" onChange={(e) => setPetBreed(e.target.value)} required/>
               </div>
               <div className={styles.subcontainer4}>
                 <label>Appointment Date:</label>
-                <input type="date" onChange={(e) => setDate(e.target.value)}/>
+                <input type="date" onChange={(e) => setDate(e.target.value)} required/>
               </div>
             </div>
             <div className={styles.time_subcontainer}>
               <div className={styles.separate_area1}>
                 <label>Appointment Time:</label>
-                <input type="time" onChange={(e) => setTime(e.target.value)}/>
+                <input type="time" step="2"  onChange={(e) => setTime(e.target.value)} required/>
               </div>
             </div>
                    

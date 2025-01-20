@@ -3,16 +3,15 @@ import axios from "axios";
 
 const ScheduleAppointment= async (email, name, Pname, Pbreed, Ptype, date, time) => {
 
+   
 
     try {
 
       const apiUrl = 'https://api.vpbackendapi.com:5000/api/schedule';
-      const dateString = date.toString();
-      const timeString = time.toString();
 
       const response = await axios.post(
         apiUrl,
-        { email,  name, Pname, Pbreed, Ptype, dateString, timeString }, // Request body
+        { email,  name, Pname, Pbreed, Ptype, date, time }, // Request body
         {
           headers: {
             'Content-Type': 'application/json',
