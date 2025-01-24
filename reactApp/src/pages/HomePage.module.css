@@ -36,3 +36,8 @@ body {
   color:black;
 }
 
+#buttonSection {
+  display: flex;
+  width: 15%;
+}
+

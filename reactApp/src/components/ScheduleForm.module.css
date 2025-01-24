@@ -1,7 +1,8 @@
 
 form {
   max-width: 40vw;
-  min-width: 20vw;
+  min-width: 10vw;
+  height: 50%;
 }
 .container {
   padding: 20px;
@@ -10,17 +11,15 @@ form {
 
 }
 
-.subcontainer3 {
+
+.subcontainer2 {
   display: flex; 
 }
 
-.subcontainer4 {
+.subcontainer3 {
   width: 50%;
 }
 
-.time_subcontainer {
-  width: 40%;
-}
 
 .separate_area1 {
   margin-top: 1vh;
@@ -46,6 +45,58 @@ form {
 #selectionBox {
   width: 100%;
 }
+
+@media only screen and (min-width: 1601px) and (max-width: 1900px) {
+
+ form {
+  height: 55%;
+ }
+ 
+.subcontainer2 {
+  display: block;
+}
+
+
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1600px) {
+
+  form {
+   height: 70%;
+  }
+  
+ .subcontainer2 {
+   display: block;
+ }
+ 
+ 
+}
+
+@media only screen and (min-width: 100px) and (max-width: 949px) {
+
+  form {
+   height: 75%;
+  }
+
+  input {
+    width: 100%;
+  }
+  
+ .subcontainer2 {
+   display: block;
+ }
+
+ label {
+  font-size: 0.6em;
+ }
+
+ #dateBox, #selectionBox {
+  font-size: 0.6em;
+ }
+ 
+ 
+}
+ 
 
 
 

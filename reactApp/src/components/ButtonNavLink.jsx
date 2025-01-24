@@ -2,7 +2,7 @@
 import {NavLink} from "react-router-dom"
 import  "./ButtonNavLink.css"
 
-
+// This is a button navigation link component that allows the user to navigate from one page to another.
 export default function ButtonNavLink({to,id,color, children}) {
   return (
     <div>

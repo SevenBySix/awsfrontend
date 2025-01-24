@@ -1,6 +1,7 @@
 import Form from "../components/Form"
 import styles from "./SignUpPage.module.css"
 
+// Signup page component that includes a header and a Form Component
 export default function SignUpPage() {
 
   return(

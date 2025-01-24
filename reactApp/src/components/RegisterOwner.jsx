@@ -1,6 +1,7 @@
 import axios from "axios";
 
-
+// This function allows the pet owner to register/signup for an appointment.
+// The sign-up data is sent to a backend api. Frontend error handling is used for when the server responds with an error
 const RegisterOwner = async (email, password) => {
 
 
@@ -23,8 +24,6 @@ const RegisterOwner = async (email, password) => {
         console.log('Registration successful:', response.data);
         alert('User registered successfully!');
         
-
-       
       }
    
     } catch (error) {

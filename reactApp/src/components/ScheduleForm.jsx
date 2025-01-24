@@ -4,12 +4,15 @@ import SubmitButton from "./SubmitButton"
 import ScheduleAppointment from "./ScheduleAppointment";
 
 
-import { useState } from "react";
 
+import { useState } from "react";
 
 export default function ScheduleForm() {
 
   const[email, setEmail] = useState("");
+  // variable to keep track of the email so it can be exported.
+ 
+
   const[clientName, setClientName] = useState("");
   const[petName, setPetName] = useState("");
   const[petBreed, setPetBreed] = useState("");
@@ -19,37 +22,63 @@ export default function ScheduleForm() {
   
     // This function is for the dropdown menu list of pet types.
     
-
+  // This function submits the data to the EC2 server and waits for a response that the data is validated and accepted.
   const handleSubmit = async(e) => {
     e.preventDefault();
     await ScheduleAppointment(email, petName,petBreed, petType, clientName, date, time);
     console.log(email, petName, petName, petBreed,  petType, clientName, date, time);
   }
 
+
+  const clearInputFields = () => {
+    setEmail("");
+    setClientName("");
+    setPetName("");
+    setPetBreed("");
+    setDate("");
+    setTime("");
+  }
+
+
+
   return (
     <form onSubmit={handleSubmit}>
-      <div className={styles.container}>
-        <div className={styles.subcontainer}>
-          <div className={styles.subcontainer2}>
-            <div className={styles.subcontainer3}>
-              <div className={styles.subcontainer4}>
-                <label>Caretaker Email:</label>
-                <input type="email" onChange={(e) => setEmail(e.target.value)} />
-              </div>
-              <div className={styles.subcontainer4}>
-                <label>Caretaker Name:</label>
-                <input type="text" onChange={(e) => setClientName(e.target.value)} />
-              </div>
+        <div className={styles.container}>
+            <div className={styles.subcontainer2}> 
+                <div className={styles.subcontainer3}>
+                  <label>Caretaker Email:</label>
+                  <input type="email" maxLength="25" onChange={(e) => setEmail(e.target.value)} required/>
+                </div>
+                <div className={styles.subcontainer3}>
+                  <label>Caretaker Name:</label>
+                  <input type="text" maxLength="25" onChange={(e) => setClientName(e.target.value)} required/>
+                </div>
             </div>
-            <div className={styles.subcontainer3}>
-              <div className={styles.subcontainer4}>
-                <label>Pet Name:</label>
-                <input type="text" onChange={(e) => setPetName(e.target.value)} />
-              </div>
-              <div className={styles.subcontainer4}>
+            <div className={styles.subcontainer2}>
+                  <div className={styles.subcontainer3}>
+                    <label>Pet Name:</label>
+                    <input type="text" maxLength="20" onChange={(e) => setPetName(e.target.value)} required/>
+                  </div>
+                  <div className={styles.subcontainer3}>
+                    <label>Pet Breed:</label>
+                    <input type="text" maxLength="15" onChange={(e) => setPetBreed(e.target.value)} required/>
+                </div>
+            </div>
+             <div className={styles.subcontainer2}>
+                  <div className={styles.subcontainer3}>
+                    <label>Pet Name:</label>
+                    <input type="text" maxLength="20" onChange={(e) => setPetName(e.target.value)} required/>
+                  </div>
+                  <div className={styles.subcontainer3}>
+                    <label>Pet Breed:</label>
+                    <input type="text" maxLength="15" onChange={(e) => setPetBreed(e.target.value)} required/>
+                </div>
+            </div>
+            <div className={styles.subcontainer2}>
+              <div className={styles.subcontainer3}>
                 <label>Pet Type:</label>
                 <div>
-                  <select id="selectionBox" onChange={(e) => setPetType(e.target.value)} >
+                  <select id={styles.selectionBox}  onChange={(e) => setPetType(e.target.value)} required>
                     <option key="1" value="Dog">Dog</option>
                     <option key="2" value="Cat">Cat</option>
                     <option key="3" value="Bird">Bird</option>
@@ -59,33 +88,25 @@ export default function ScheduleForm() {
                   </select>
                 </div>
               </div>
+              <div className={styles.subcontainer3}>
+                  <label>Appointment Date:</label>
+                  <input id={styles.dateBox} type="date" onChange={(e) => setDate(e.target.value)} required/>
+              </div>
             </div>
             <div className={styles.subcontainer3}>
-              <div className={styles.subcontainer4}>
-                <label>Pet Breed:</label>
-                <input type="text" onChange={(e) => setPetBreed(e.target.value)} />
-              </div>
-              <div className={styles.subcontainer4}>
-                <label>Appointment Date:</label>
-                <input type="date" onChange={(e) => setDate(e.target.value)} />
-              </div>
-            </div>
-            <div className={styles.time_subcontainer}>
-              <div className={styles.separate_area1}>
                 <label>Appointment Time:</label>
-                <input type="time" onChange={(e) => setTime(e.target.value)}required/>
-              </div>
+              
+                  <input id={styles.timeBox} type="time" onChange={(e) => setTime(e.target.value)} required/>
+               
             </div>
-                   
-          </div>
-        </div>
-      </div>
 
+        </div>
+                   
       <div className={styles.separate_area2}>
         <SubmitButton color="orange" text="Submit Schedule"/>
       </div>  
       <div className={styles.separate_area3}>
-        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button}/>
+        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button} onClick={clearInputFields}/>
       </div>
       <div className={styles.separate_area4}>
         <ButtonNavLink to="/clientDashboard" id="client_dashboard_button" color="#34d1c9">View Appointments➡ </ButtonNavLink>

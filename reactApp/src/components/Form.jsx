@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 
 
 
-
+// This is the form component that is reusable by other web page components in this web application
 // eslint-disable-next-line no-unused-vars, react/prop-types
 export default function Form({forwardButtonPath, backButtonPath}) {
 
@@ -29,7 +29,10 @@ export default function Form({forwardButtonPath, backButtonPath}) {
   // page location
   const pageLocation = useLocation();
 
+  // conditions for the navigation links that will allow the user to go from one page to another based on the location
+  // of the page in this web application's file directory
   const condition =  pageLocation.pathname == "/signup";
+  const condition2 =  pageLocation.pathname == "/login";
  
 
 
@@ -66,7 +69,7 @@ export default function Form({forwardButtonPath, backButtonPath}) {
           <div className={styles.formButtons}>
             <ButtonNavLink to={backButtonPath} id={styles.goBackToHomePageButton} color={backButtonColor}>⬅ Back</ButtonNavLink>
             <SubmitButton text="submit" id={styles.submitButton1} color={submitButtonColor} />
-            <ButtonNavLink to={forwardButtonPath} id={styles.goToLoginPageButton} color={nextButtonColor}>Next ➡ </ButtonNavLink>
+            {condition2 && <ButtonNavLink to={forwardButtonPath} id={styles.goToLoginPageButton} color={nextButtonColor}>Next ➡ </ButtonNavLink>}
           </div>
         
         </div>
