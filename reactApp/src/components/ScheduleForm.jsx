@@ -29,16 +29,19 @@ export default function ScheduleForm() {
     console.log(email, petName, petName, petBreed,  petType, clientName, date, time);
   }
 
+  // This function is to validate the timestamp that the user sends
+  /*
+  const checkTime = async() => {
+      const year = new Date().getFullYear();
+      const month = new Date().getMonth();
+      const day = new Date().getDay();
 
-  const clearInputFields = () => {
-    setEmail("");
-    setClientName("");
-    setPetName("");
-    setPetBreed("");
-    setDate("");
-    setTime("");
+      const selectedDay = date.split("/")[1];
+
+    
+
   }
-
+    */
 
 
   return (
@@ -47,31 +50,21 @@ export default function ScheduleForm() {
             <div className={styles.subcontainer2}> 
                 <div className={styles.subcontainer3}>
                   <label>Caretaker Email:</label>
-                  <input type="email" maxLength="25" onChange={(e) => setEmail(e.target.value)} required/>
+                  <input type="email" maxLength="30" onChange={(e) => setEmail(e.target.value)} required/>
                 </div>
                 <div className={styles.subcontainer3}>
                   <label>Caretaker Name:</label>
-                  <input type="text" maxLength="25" onChange={(e) => setClientName(e.target.value)} required/>
+                  <input type="text" maxLength="30" onChange={(e) => setClientName(e.target.value)} required/>
                 </div>
             </div>
             <div className={styles.subcontainer2}>
                   <div className={styles.subcontainer3}>
                     <label>Pet Name:</label>
-                    <input type="text" maxLength="20" onChange={(e) => setPetName(e.target.value)} required/>
+                    <input type="text" maxLength="40" onChange={(e) => setPetName(e.target.value)} required/>
                   </div>
                   <div className={styles.subcontainer3}>
                     <label>Pet Breed:</label>
-                    <input type="text" maxLength="15" onChange={(e) => setPetBreed(e.target.value)} required/>
-                </div>
-            </div>
-             <div className={styles.subcontainer2}>
-                  <div className={styles.subcontainer3}>
-                    <label>Pet Name:</label>
-                    <input type="text" maxLength="20" onChange={(e) => setPetName(e.target.value)} required/>
-                  </div>
-                  <div className={styles.subcontainer3}>
-                    <label>Pet Breed:</label>
-                    <input type="text" maxLength="15" onChange={(e) => setPetBreed(e.target.value)} required/>
+                    <input type="text" maxLength="40" onChange={(e) => setPetBreed(e.target.value)} required/>
                 </div>
             </div>
             <div className={styles.subcontainer2}>
@@ -106,7 +99,7 @@ export default function ScheduleForm() {
         <SubmitButton color="orange" text="Submit Schedule"/>
       </div>  
       <div className={styles.separate_area3}>
-        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button} onClick={clearInputFields}/>
+        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button}/>
       </div>
       <div className={styles.separate_area4}>
         <ButtonNavLink to="/clientDashboard" id="client_dashboard_button" color="#34d1c9">View Appointments➡ </ButtonNavLink>

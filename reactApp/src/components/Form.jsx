@@ -7,6 +7,7 @@ import axios from "axios";
 
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+//import { hashPassword } from "../functions/hashPassword";
 
 
 // This is the form component that is reusable by other web page components in this web application

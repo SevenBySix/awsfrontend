@@ -1,12 +1,15 @@
 import axios from "axios";
 //import { loginKey } from "./LoginOwner";
+//import { getCookie } from "../functions/GetCookie";
 
 // This function returns the token stored in the cookie
+// if async does not work, get rid of it.
+
 function getCookie(name) {
   const cookies = document.cookie.split(';');
   for(let i = 0; i < cookies.length; i++) {
     const cookie = cookies[i].trim(); // trims the whitespace in the array of characters
-
+    
     // picks which substring starts with the token name plus the equal sign
     if (cookie.startsWith(name + '=')) { 
       return cookie.substring(name.length + 1); // returns the token not counting "name="
@@ -14,6 +17,8 @@ function getCookie(name) {
   }
   return null;
 }
+
+
 
 // this variable stores the token.
 const token = getCookie("token");
@@ -48,7 +53,7 @@ const ScheduleAppointment= async (email, Pname, Pbreed, Ptype, Cname, date, time
       }
    
     } catch (error) {
-      if (!email || !name || !Pname || !Pbreed || !Ptype || !date || !time) {
+      if (!email || !Pname || !Pbreed || !Ptype || !Cname || !date || !time) {
         // Server responded with an error status
         console.error('Scheduling failed:', error.response.data);
         alert(error.response.data.error || 'Registration failed.');
