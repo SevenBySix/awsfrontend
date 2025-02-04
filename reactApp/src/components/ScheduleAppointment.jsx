@@ -31,7 +31,7 @@ const ScheduleAppointment= async (email, Pname, Pbreed, Ptype, Cname, date, time
   
     try {
 
-      const apiUrl = 'https://api.vpbackendapi.com:5000/api/schedule/auth';
+      const apiUrl = 'https://api.vpbackendapi.com:5000/api/schedule';
 
       const response = await axios.post(
         apiUrl,

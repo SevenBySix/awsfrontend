@@ -1,11 +1,10 @@
 import styles from "./ClientDashboard.module.css"
 import {useEffect, useState } from "react";
 import axios from "axios";
-// This library is used to generate unique keys for the list items. Each key is 128 bits long and is randomly generated through this library.
-import { v4 as uuidv4 } from 'uuid';
 //import {Loading} from "../components/Loading"
 //import { getCookie } from "../functions/GetCookie";
 import ListItem from "../components/ListItem";
+
 
 
 function getCookie(name) {
@@ -49,18 +48,20 @@ export default function ClientDashboard() {
   useEffect(() => {
     const fetchAppointments = async() => {
 
-      const apiURL = 'https://api.vpbackendapi.com:5000/api/appointments';
+      const apiURL = 'https://api.vpbackendapi.com:5000/api/appointments/';
       try {
 
-        axios.get(apiURL,{
+        const response = await axios.get(apiURL,{
             headers: {
               'Authorization': 'Bearer ' + token
             }
           }
-        ).then(response => {
-          console.log(response.data);
-          setData(response.data);
-        })
+        );
+
+        console.log(response.data);
+
+        setData(response.data.appointments);
+
 
       } catch(error) {
         console.log("Error loading appointment data:", error);
@@ -71,7 +72,7 @@ export default function ClientDashboard() {
 
   },[]); //where dependency array goes.
    
-//   {data.map((item) => (<ListItem key={uuidv4()} item={item}/>))}
+//   {data.map((item) => (<ListItem key={item.id} item={item}/>))}
  
   return (
     <div className={styles.container}>
@@ -80,10 +81,10 @@ export default function ClientDashboard() {
       <div className={styles.inner_container}>
 
           <div className={styles.schedule_appointments_container}>
-            <div><h2>Your Scheduled Appointments</h2></div>
+            <div><h2>Your Scheduled Appointments ({data.length})</h2></div>
             <div className={styles.appointment_list_container}>
               <ul>
-            
+                {data.map((item) => (<ListItem key={item.id} item={item}/>))}
               
               </ul>
             

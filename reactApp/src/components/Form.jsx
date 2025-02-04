@@ -2,7 +2,6 @@ import styles from "./Form.module.css"
 import ButtonNavLink from "./ButtonNavLink";
 import SubmitButton from "./SubmitButton";
 import LoginNavLink from "./LoginNavLink";
-//import LoginOwner from "./LoginOwner";
 import axios from "axios";
 
 import { useState } from "react";
