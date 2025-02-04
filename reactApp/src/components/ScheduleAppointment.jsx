@@ -8,7 +8,7 @@ import axios from "axios";
 function getCookie(name) {
   const cookies = document.cookie.split(';');
   for(let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim(); // trims the whitespace in the array of characters
+    const cookie = cookies[i].trim(); // sticks each character in the cookie string into an array, whitespace included 
     
     // picks which substring starts with the token name plus the equal sign
     if (cookie.startsWith(name + '=')) { 

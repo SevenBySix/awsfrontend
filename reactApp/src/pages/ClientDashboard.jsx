@@ -1,9 +1,11 @@
 import styles from "./ClientDashboard.module.css"
 import {useEffect, useState } from "react";
 import axios from "axios";
-//import {Loading} from "../components/Loading"
+import Loading from "../components/Loading"
+import ErrorMessage from "../components/ErrorMessage";
 //import { getCookie } from "../functions/GetCookie";
-import ListItem from "../components/ListItem";
+//import ListItem from "../components/ListItem";
+import ScheduleAppointmentList from "../components/ScheduleAppointmentList"
 
 
 
@@ -36,9 +38,8 @@ const items = [
 // Client Dashboard component that allows the user to view newly created appointments and past visits.
 export default function ClientDashboard() {
 
-  //const[appointments, setAppointments] = useState([]);
-  //const[pastAppointments, setPastAppointments] = useState([]);
-  //const [isDataLoading, setIsDateLoading] = useState(false);
+  const [isDataLoading, setIsDateLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   
   const [data, setData] = useState([]);
@@ -48,7 +49,8 @@ export default function ClientDashboard() {
   useEffect(() => {
     const fetchAppointments = async() => {
 
-      const apiURL = 'https://api.vpbackendapi.com:5000/api/appointments/';
+      setIsDateLoading(true);
+      const apiURL = 'https://api.vpbackendapi.com:5000/api/appointments';
       try {
 
         const response = await axios.get(apiURL,{
@@ -57,36 +59,43 @@ export default function ClientDashboard() {
             }
           }
         );
-
+        
         console.log(response.data);
-
         setData(response.data.appointments);
+       
+        
+        
 
 
       } catch(error) {
         console.log("Error loading appointment data:", error);
+        setError(true);
+      }finally {
+        setIsDateLoading(false);
       }
     }
 
     fetchAppointments();
 
   },[]); //where dependency array goes.
+
+  console.log(data);
    
 //   {data.map((item) => (<ListItem key={item.id} item={item}/>))}
  
   return (
     <div className={styles.container}>
-      <h1>Client Dashboard</h1>
+      <h1>Client Dashboard </h1>
 
       <div className={styles.inner_container}>
 
           <div className={styles.schedule_appointments_container}>
             <div><h2>Your Scheduled Appointments ({data.length})</h2></div>
             <div className={styles.appointment_list_container}>
-              <ul>
-                {data.map((item) => (<ListItem key={item.id} item={item}/>))}
-              
-              </ul>
+             
+               {isDataLoading && <Loading/>}
+               {!isDataLoading && !error && <ScheduleAppointmentList appointments={data}/>}
+               {error && <ErrorMessage />}
             
             </div>
         </div>
