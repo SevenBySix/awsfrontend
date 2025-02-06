@@ -30,19 +30,94 @@ export default function ScheduleForm() {
   }
 
   // This function is to validate the timestamp that the user sends
-  /*
-  const checkTime = async() => {
-      const year = new Date().getFullYear();
-      const month = new Date().getMonth();
-      const day = new Date().getDay();
+  
+  const validateDate = async(e) => {
 
-      const selectedDay = date.split("/")[1];
+      const todaysDate = new Date();
+      const currentDay = todaysDate.getDay() + 2;
+      const currentMonth = todaysDate.getMonth() + 1;
+      const currentYear = todaysDate.getFullYear();
 
+      console.log(todaysDate);
+      console.log(todaysDate.getDay());
+      console.log(todaysDate.getMonth());
+
+     
+
+      
+      const dateValue = e.target.value;
+      console.log(dateValue);
+      
+      const selectedYear = parseInt(dateValue.split("-")[0]);
+      const selectedMonth = parseInt(dateValue.split("-")[1]);
+      const selectedDay = parseInt(dateValue.split("-")[2]);
+
+      console.log(currentDay);
+      console.log(currentMonth, selectedMonth);
+      console.log(currentYear, selectedYear);
+
+      const dayCondition = selectedDay >= currentDay;
+      const monthCondition = selectedMonth >= currentMonth;
+      const yearCondition = selectedYear == currentYear;
+      
+
+
+      if(dayCondition && monthCondition && yearCondition) {
+        setDate(dateValue);
+      } else {
+        alert("Please input a date that is today or after today's date. Must be this year.");
+        console.error("Invalid date");
+      }
     
+  }
+
+
+  const validateTime = async(e) => {
+
+    const date = new Date();
+    
+    
+    const hourOpen = 9; // 9:30 a.m.
+    const minuteOpen = 30;
+
+    const hourClosed = 20; // 8:30 p.m.
+    const minuteClosed = 30;
+
+    const currentHour = date.getHours();
+    const currentMinutes = date.getMinutes();
+  
+
+    const selectedTime = e.target.value;
+    const selectedHour = parseInt(selectedTime.split(":")[0]);
+    const selectedMinute = parseInt(selectedTime.split(":")[1]);
+
+
+    //console.log(currentHour, currentMinutes);
+   
+    //const condition2 = selectedHour >= currentHour;
+
+    //const condition3 = selectedMinute >= minuteOpen;
+    //const condition4 = selectedMinute >= currentMinutes;
+
+    const condition1 = (selectedHour <= hourOpen && selectedMinute <= minuteOpen) || (selectedHour <= currentHour && selectedMinute <= currentMinutes);
+
+
+    const condition2 = selectedHour >= hourClosed && (selectedMinute > minuteClosed || selectedMinute != minuteClosed) ;
+
+    console.log(condition1, condition2);
+    console.log(condition1 || condition2);
+
+    if(condition1 || condition2) {
+      //alert("Your selected time is invalid.  Please make it after our open time and before our closed time");
+      console.log("invalid time.");
+      alert("Your selectedtime is invalid. Your time is either before our open hours and the current time, or your time is after our closed time.");
+    } else {
+      setTime(selectedTime);
+      console.log("valid time.");
+    }
+  
 
   }
-    */
-
 
   return (
     <form onSubmit={handleSubmit}>
@@ -72,24 +147,25 @@ export default function ScheduleForm() {
                 <label>Pet Type:</label>
                 <div>
                   <select id={styles.selectionBox}  onChange={(e) => setPetType(e.target.value)} required>
-                    <option key="1" value="Dog">Dog</option>
-                    <option key="2" value="Cat">Cat</option>
-                    <option key="3" value="Bird">Bird</option>
-                    <option key="4" value="Lizard">Lizard</option>
-                    <option key="5" value="Snake">Snake</option>
-                    <option key="6" value="Mouse">Mouse</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Lizard">Lizard</option>
+                    <option value="Snake">Snake</option>
+                    <option value="Mouse">Mouse</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
               <div className={styles.subcontainer3}>
                   <label>Appointment Date:</label>
-                  <input id={styles.dateBox} type="date" onChange={(e) => setDate(e.target.value)} required/>
+                  <input id={styles.dateBox} type="date" value={date} onChange={validateDate} required/>
               </div>
             </div>
             <div className={styles.subcontainer3}>
                 <label>Appointment Time:</label>
               
-                  <input id={styles.timeBox} type="time" onChange={(e) => setTime(e.target.value)} required/>
+                  <input id={styles.timeBox} type="time" onChange={validateTime} required/>
                
             </div>
 
