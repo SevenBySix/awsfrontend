@@ -41,3 +41,16 @@ body {
   width: 15%;
 }
 
+.timeDisplay {
+  text-align: center;
+  font-size: 1em;
+}
+
+.closed {
+  color: red;
+}
+
+.open {
+  color: rgb(71, 3, 102)
+}
+

@@ -5,6 +5,7 @@ import ScheduleAppointment from "./ScheduleAppointment";
 
 
 
+
 import { useState } from "react";
 
 export default function ScheduleForm() {
@@ -119,34 +120,45 @@ export default function ScheduleForm() {
 
   }
 
+  const clearFields = () => {
+    console.log("clearFields executed");
+    setPetName("");
+    setClientName("");
+    setEmail("");
+    setPetBreed("");
+    setPetType("");
+    setDate("");
+    setTime("");
+  };
+
   return (
     <form onSubmit={handleSubmit}>
         <div className={styles.container}>
             <div className={styles.subcontainer2}> 
                 <div className={styles.subcontainer3}>
                   <label>Caretaker Email:</label>
-                  <input type="email" maxLength="30" onChange={(e) => setEmail(e.target.value)} required/>
+                  <input type="email" maxLength="30" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                 </div>
                 <div className={styles.subcontainer3}>
                   <label>Caretaker Name:</label>
-                  <input type="text" maxLength="30" onChange={(e) => setClientName(e.target.value)} required/>
+                  <input type="text" maxLength="30" value={clientName} onChange={(e) => setClientName(e.target.value)} required/>
                 </div>
             </div>
             <div className={styles.subcontainer2}>
                   <div className={styles.subcontainer3}>
                     <label>Pet Name:</label>
-                    <input type="text" maxLength="40" onChange={(e) => setPetName(e.target.value)} required/>
+                    <input type="text" maxLength="40" value={petName} onChange={(e) => setPetName(e.target.value)} required/>
                   </div>
                   <div className={styles.subcontainer3}>
                     <label>Pet Breed:</label>
-                    <input type="text" maxLength="40" onChange={(e) => setPetBreed(e.target.value)} required/>
+                    <input type="text" maxLength="40" value={petBreed} onChange={(e) => setPetBreed(e.target.value)} required/>
                 </div>
             </div>
             <div className={styles.subcontainer2}>
               <div className={styles.subcontainer3}>
                 <label>Pet Type:</label>
                 <div>
-                  <select id={styles.selectionBox}  onChange={(e) => setPetType(e.target.value)} required>
+                  <select id={styles.selectionBox} value={petType} onChange={(e) => setPetType(e.target.value)} required>
                     <option value="Dog">Dog</option>
                     <option value="Cat">Cat</option>
                     <option value="Bird">Bird</option>
@@ -164,9 +176,7 @@ export default function ScheduleForm() {
             </div>
             <div className={styles.subcontainer3}>
                 <label>Appointment Time:</label>
-              
-                  <input id={styles.timeBox} type="time" onChange={validateTime} required/>
-               
+                <input id={styles.timeBox} type="time" value={time} onChange={validateTime} required/>
             </div>
 
         </div>
@@ -175,7 +185,7 @@ export default function ScheduleForm() {
         <SubmitButton color="orange" text="Submit Schedule"/>
       </div>  
       <div className={styles.separate_area3}>
-        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button}/>
+        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button} onClick={clearFields}/>
       </div>
       <div className={styles.separate_area4}>
         <ButtonNavLink to="/clientDashboard" id="client_dashboard_button" color="#34d1c9">View Appointments➡ </ButtonNavLink>
