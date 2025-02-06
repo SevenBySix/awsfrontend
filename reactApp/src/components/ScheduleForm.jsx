@@ -71,7 +71,7 @@ export default function ScheduleForm() {
     
   }
 
-
+  // This function will validate the time in which the user selects to make sure it is between the open and close hours.
   const validateTime = async(e) => {
 
     const date = new Date();
