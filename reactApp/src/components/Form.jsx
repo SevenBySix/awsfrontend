@@ -141,7 +141,7 @@ const RegisterOwner = async (email, password) => {
 
           <div className={styles.formButtons}>
             <ButtonNavLink to={backButtonPath} id={styles.goBackToHomePageButton} color={backButtonColor}>⬅ Back</ButtonNavLink>
-            <SubmitButton text="submit" id={styles.submitButton1} color={submitButtonColor} />
+            <SubmitButton text="submit" id={styles.submitButton} color={submitButtonColor} />
           </div>
         
         </div>

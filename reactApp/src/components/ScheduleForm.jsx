@@ -188,7 +188,7 @@ export default function ScheduleForm() {
         <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button} onClick={clearFields}/>
       </div>
       <div className={styles.separate_area4}>
-        <ButtonNavLink to="/clientDashboard" id="client_dashboard_button" color="#34d1c9">View Appointments➡ </ButtonNavLink>
+        <ButtonNavLink to="/clientDashboard" id={styles.viewAppointmentsButton} color="#34d1c9">View Appointments➡ </ButtonNavLink>
       </div>    
     
 

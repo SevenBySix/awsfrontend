@@ -43,7 +43,12 @@ form {
 }
 
 #selectionBox {
-  width: 100%;
+  width: 50%;
+}
+
+#viewAppointmentsButton {
+  width: auto;
+
 }
 
 @media only screen and (min-width: 1601px) and (max-width: 1900px) {
@@ -55,6 +60,7 @@ form {
 .subcontainer2 {
   display: block;
 }
+
 
 
 }
