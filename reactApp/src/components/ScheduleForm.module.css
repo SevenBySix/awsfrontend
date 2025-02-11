@@ -25,6 +25,11 @@ form {
   margin-top: 1vh;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .separate_area2 {
   margin-top: 2vh;
 }
@@ -42,14 +47,16 @@ form {
   background-color:rgb(236, 236, 23);
 }
 
+#viewAppointmentsButton {
+  
+
+}
+
 #selectionBox {
   width: 50%;
 }
 
-#viewAppointmentsButton {
-  width: auto;
 
-}
 
 @media only screen and (min-width: 1601px) and (max-width: 1900px) {
 

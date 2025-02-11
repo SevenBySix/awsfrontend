@@ -32,15 +32,24 @@ body {
   font-size: 7.5vh;
 }
 
-#scheduleButton {
+#buttonSection {
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  margin-right: 4em;
+}
+
+#signUpButton {
   color:black;
   width: auto;
 }
 
-#buttonSection {
-  display: flex;
-  width: 15%;
+#loginButton {
+  color:black;
+  width: auto;
 }
+
+
 
 .timeDisplay {
   text-align: center;

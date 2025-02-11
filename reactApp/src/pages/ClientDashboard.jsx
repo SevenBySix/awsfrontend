@@ -26,14 +26,7 @@ function getCookie(name) {
 
 const token = getCookie("token");
 
-/*
-const items = [
-  {name: "walter", petName: "charles", time: "3:23", date: "1/23/24"  },
-  {name: "Humphrey", petName: "willy", time: "12:14", date: "3/23/24"  },
-  {name: "Thumper", petName: "Gullible", time: "5:50", date: "5/30/24"  },
-  {name: "Thumper", petName: "Gullible", time: "5:50", date: "5/30/24"  }
-];
-*/
+
 
 // Client Dashboard component that allows the user to view newly created appointments and past visits.
 export default function ClientDashboard() {

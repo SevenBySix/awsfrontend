@@ -19,8 +19,8 @@ export default function HomePage() {
       <nav className={styles.navbar}>
         <div id={styles.logo}><h2>🐕Veterinarian Web App</h2></div>
         <div id={styles.buttonSection}>
-          <ButtonNavLink to="/signup" id={styles.scheduleButton} color="orange">Sign Up</ButtonNavLink>
-          <ButtonNavLink to="/login" id={styles.scheduleButton} color="red">Login</ButtonNavLink>
+          <ButtonNavLink to="/signup" id={styles.signUpButton} color="orange">Signup</ButtonNavLink>
+          <ButtonNavLink to="/login" id={styles.loginButton} color="red">Login</ButtonNavLink>
         </div>   
       </nav>
 

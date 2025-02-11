@@ -180,17 +180,19 @@ export default function ScheduleForm() {
             </div>
 
         </div>
-                   
-      <div className={styles.separate_area2}>
-        <SubmitButton color="orange" text="Submit Schedule"/>
-      </div>  
-      <div className={styles.separate_area3}>
-        <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button} onClick={clearFields}/>
+
+      <div className={styles.buttonContainer}>
+          <div className={styles.separate_area2}>
+              <SubmitButton color="orange" text="Submit Schedule"/>
+          </div>  
+          <div className={styles.separate_area3}>
+              <input type="button" value="Create New Schedule➕"  id={styles.new_appointment_button} onClick={clearFields}/>
+          </div>
+          <div className={styles.separate_area4}>
+            <ButtonNavLink to="/clientDashboard" id={styles.viewAppointmentsButton} color="#34d1c9">View Appointments➡ </ButtonNavLink>
+          </div>    
       </div>
-      <div className={styles.separate_area4}>
-        <ButtonNavLink to="/clientDashboard" id={styles.viewAppointmentsButton} color="#34d1c9">View Appointments➡ </ButtonNavLink>
-      </div>    
-    
+                   
 
     </form>
   )

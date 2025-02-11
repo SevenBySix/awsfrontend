@@ -56,7 +56,8 @@ form .formButtons {
 }
 
 #goBackToHomePageButton,#submitButton {
-  width: auto;
+  border: solid;
+  width: 4em;
 }
 
 @media only screen and (min-width: 1200px) {
